@@ -1,0 +1,90 @@
+<%- include('../partials/header'); -%>
+<body>
+  <main>
+    <div class="" style="background-color: #0f415c;">
+      <div class="container-fluid" style="padding: 2%; ">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/review">Review</a>
+                </li>
+            </div>
+          </nav>
+
+          <br>
+        <form class="" action="/review" method="post">
+          <div class="row">
+            <div class="col-3">
+                
+            </div>
+            <div class="col-5">
+              <input class="form-control" type="text" name="search" placeholder="Look up dish in database">
+            </div>
+            <!-- <div class="col-1">
+              <input class="btn btn-light" type="submit" name="Submit" value = "Submit"/>
+            </div> -->
+          <!-- </div> -->
+        </form>
+      </div>
+    </div>
+    <!-- <div class="container-lg" style="margin-top: 2%;">
+      <% if (reviews) { 
+        console.log(reviews); 
+        var test = "";
+        for (review in reviews) {
+            test += "<p>Name: " + review.name ;
+            test += " Review: " + review.review + "</p>";
+        }
+        %>
+         <%} else {
+          console.log(error);
+        } %>
+      <% if (error) { %>
+        <div class="alert alert-danger"><%- error.message %></div>
+      <% } %>
+      <%- test -%>
+    </div> -->
+    
+  </main>
+  <!-- <div class="container-lg" style="margin-top: 2%;">
+    <table>
+    <% if (reviews) { 
+      console.log(reviews); 
+      var test = "";
+      var i = 0
+      reviews.forEach(review => {
+          console.log(i+=1)
+          console.log(review)
+          test += "<p>Name: " + review.meal_name ;
+          test += " Review: " + review.review + "</p>";
+      })
+    } %>
+    <% if (error) { %>
+      <div class="alert alert-danger"><%- error.message %></div>
+    <% } %>
+    <%- test -%>
+</table>
+  </div> -->
+  <table class="table table-bordered" id="reviews">
+    <tr>
+      <th>Meal</th>
+      <th>Review</th>
+      <th>Review Date</th>
+  <% if (reviews) {
+      var rev = '';
+      reviews.forEach(r => {
+        rev += `<tr><td>${r.meal_name}</td>`;
+        rev += `<td>${r.review}</td>`;
+        rev += `<td>${r.review_date}</td></tr>`;
+      });%>
+    <%-rev%>
+  <%}%>
+  </table>
+<%- include('../partials/footer'); -%>
